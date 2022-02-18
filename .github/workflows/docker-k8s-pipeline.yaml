@@ -19,9 +19,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Build the docker Image
-        run: docker build -t notejam:master .
+        run: docker build -t notejam:main .
       - name: Tag the Dcker Image
-        run: docker tag notejam:master arkdocr/jenkins:latest
+        run: docker tag notejam:main arkdocr/notejam-actions:latest
 
   push-docker-image:
     needs: build-docker-image
@@ -30,15 +30,15 @@ jobs:
       - name: Login to Dockerhub
         run: docker login -u "${{ secrets.CI_REGISTRY_USER }}" -p "${{ secrets.CI_REGISTRY_PASSWORD }}" ${{ secrets.CI_REGISTRY }}   
       - name: Push the Image to Dockerhub
-        run: docker push arkdocr/jenkins:latest
+        run: docker push arkdocr/notejam-actions:latest
 
   Deploy-to-GKE:
     needs: push-docker-image
     runs-on: GKE-runner
     env:
-        PROJECT_ID: project-k8-326109
-        GKE_CLUSTER: cluster-1    
-        GKE_ZONE: asia-south2-b 
+        PROJECT_ID: project-1-338918
+        GKE_CLUSTER: maestro-cluster-1    
+        GKE_ZONE: asia-south2-a 
         credentials: ${{ secrets.GKE_SA_KEY }}
     
     steps:

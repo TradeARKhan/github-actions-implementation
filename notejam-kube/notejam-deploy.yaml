@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: notejam-nodejs
-        image: arkdocr/jenkins:latest
+        image: arkdocr/notejam-actions:latest
         ports:
           - containerPort: 3000
         env:
