@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Build the docker Image
         run: docker build -t notejam:main .
-      - name: Tag the Dcker Image
+      - name: Tag the Docker Image
         run: docker tag notejam:main arkdocr/notejam-actions:latest
 
   push-docker-image:
