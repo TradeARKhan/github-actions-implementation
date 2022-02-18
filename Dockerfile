@@ -9,7 +9,7 @@ WORKDIR /home/root/app/
 
 COPY --chown=root:root /notejam-mysql/notejam/ /home/root/app
 
-RUN npm cache clean --force && npm install &&\
+RUN npm install && npm cache clean --force && \
     curl -s https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /home/root/app//wait-for-it.sh &&\
     chmod 755 /home/root/app//wait-for-it.sh
 
