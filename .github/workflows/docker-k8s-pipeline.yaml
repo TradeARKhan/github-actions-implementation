@@ -1,4 +1,4 @@
-name: Github CICD for Notejam
+name: Github CICD for Notejam Application
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
 
   Deploy-to-GKE:
     needs: push-docker-image
-    runs-on: GKE-runner
+    runs-on: self-hosted
     env:
         PROJECT_ID: project-1-338918
         GKE_CLUSTER: maestro-cluster-1    
