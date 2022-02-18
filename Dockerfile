@@ -7,7 +7,7 @@ EXPOSE $NOTEJAM_PORT/tcp
 USER root
 WORKDIR /home/root/app/
 
-COPY --chown=root:root /notejam-mysql/notejam/ /home/root/app
+COPY --chown=root:root /notejam-source/notejam/ /home/root/app
 
 RUN npm install && npm cache clean --force && \
     curl -s https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /home/root/app//wait-for-it.sh &&\
