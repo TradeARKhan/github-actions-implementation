@@ -24,7 +24,7 @@ jobs:
         run: docker tag notejam:master arkdocr/jenkins:latest
 
   push-docker-image:
-    needs: build-docker
+    needs: build-docker-image
     runs-on: self-hosted
     steps:
       - name: Login to Dockerhub
